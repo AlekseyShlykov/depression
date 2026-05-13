@@ -41,6 +41,7 @@ const els = {
   musicBtn: $("#music-btn"),
   titleBg: document.querySelector('[data-bg="title"]'),
   gameBg: document.querySelector('[data-bg="game"]'),
+  stage: document.querySelector("#game-screen .stage"),
 };
 
 const musicAudio = new Audio("assets/backingmusic.mp3");
@@ -109,6 +110,30 @@ function revealMusicFooter() {
 
 /** Formspree: only the `email` field is submitted (no message body). */
 const FORMSPREE_ENDPOINT = "https://formspree.io/f/mjgldbwb";
+
+/** Horizontal pan of the game background (phone portrait only). 0–100 (%). */
+let stageBgPanPct = 50;
+
+/** @type {{ pointerId: number; startX: number; startPct: number } | null} */
+let stageBgPanDrag = null;
+
+function stagePanMediaQuery() {
+  return window.matchMedia("(max-width: 640px) and (orientation: portrait)");
+}
+
+function applyStageBgPan() {
+  if (!els.gameBg) return;
+  if (!stagePanMediaQuery().matches) {
+    els.gameBg.style.backgroundPosition = "";
+    return;
+  }
+  els.gameBg.style.backgroundPosition = `${stageBgPanPct}% bottom`;
+}
+
+function resetStageBgPan() {
+  stageBgPanPct = 50;
+  applyStageBgPan();
+}
 
 function resetEndEmailUi() {
   const p = els.endEmailPanel;
@@ -198,6 +223,7 @@ function applyStaticStrings() {
   const url = bgForLang(lang);
   els.titleBg.style.backgroundImage = `url("${url}")`;
   els.gameBg.style.backgroundImage = `url("${url}")`;
+  resetStageBgPan();
 
   if (els.alien1Label)
     els.alien1Label.textContent = t("speakers.alien1", "Alien 1");
@@ -260,6 +286,7 @@ function showGameScreen() {
   hideEndEmailForm();
   els.titleScreen.classList.remove("is-active");
   els.gameScreen.classList.add("is-active");
+  resetStageBgPan();
   engine.start();
 }
 
@@ -382,6 +409,66 @@ function wireEvents() {
       }
     });
   }
+
+  wireStageBackgroundPan();
+}
+
+function wireStageBackgroundPan() {
+  const stage = els.stage;
+  const bg = els.gameBg;
+  if (!stage || !bg) return;
+
+  const mq = stagePanMediaQuery();
+  mq.addEventListener("change", () => {
+    stageBgPanDrag = null;
+    if (!mq.matches) {
+      stageBgPanPct = 50;
+      bg.style.backgroundPosition = "";
+    } else {
+      applyStageBgPan();
+    }
+  });
+
+  stage.addEventListener("pointerdown", (e) => {
+    if (!mq.matches) return;
+    if (!els.gameScreen?.classList.contains("is-active")) return;
+    if (!e.isPrimary) return;
+    if (e.button !== 0) return;
+    stageBgPanDrag = {
+      pointerId: e.pointerId,
+      startX: e.clientX,
+      startPct: stageBgPanPct,
+    };
+    try {
+      stage.setPointerCapture(e.pointerId);
+    } catch (_) {
+      /* ignore */
+    }
+  });
+
+  stage.addEventListener("pointermove", (e) => {
+    if (!stageBgPanDrag || e.pointerId !== stageBgPanDrag.pointerId) return;
+    if (!e.isPrimary) return;
+    if (!mq.matches) return;
+    const w = stage.getBoundingClientRect().width || 1;
+    const dx = e.clientX - stageBgPanDrag.startX;
+    const deltaPct = (-dx / w) * 115;
+    const raw = stageBgPanDrag.startPct + deltaPct;
+    stageBgPanPct = Math.max(0, Math.min(100, raw));
+    applyStageBgPan();
+  });
+
+  const endPan = (e) => {
+    if (!stageBgPanDrag || e.pointerId !== stageBgPanDrag.pointerId) return;
+    try {
+      stage.releasePointerCapture(e.pointerId);
+    } catch (_) {
+      /* ignore */
+    }
+    stageBgPanDrag = null;
+  };
+  stage.addEventListener("pointerup", endPan);
+  stage.addEventListener("pointercancel", endPan);
 }
 
 async function boot() {

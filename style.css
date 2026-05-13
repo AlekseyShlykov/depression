@@ -551,16 +551,16 @@ body {
 
 /* ---------- Responsive ----------
    Breakpoints:
-   1. Phone portrait — shorter dialogue panel, aliens raised, stage bg `cover`
-      anchored to the bottom (avoids `contain` letterboxing hiding the ship).
+   1. Phone portrait — taller dialogue panel for text + choices; smaller ship
+      strip; aliens raised above the panel; stage bg `cover` + bottom anchor.
    2. Phones / iPad split-view in landscape — very little vertical room;
       dialogue shrinks and aliens scale down.
-   3. Tiny phones (≤ 360px) — title + tap targets; game tweaks align with (1).
+   3. Tiny phones (≤ 360px) — title + tap targets; dialogue stays readable.
 */
 
 /* ========================================================================
-   Phones — portrait (shorter panel + bottom-anchored cover bg so the ship
-   fills the stage; `contain` was removed — it left almost all-black screens).
+   Phones — portrait (taller dialogue so text + buttons fit; smaller stage
+   strip for the ship; bottom-anchored cover bg).
    ======================================================================== */
 @media (max-width: 640px) and (orientation: portrait) {
   /*
@@ -585,17 +585,23 @@ body {
     );
   }
 
-  /* Give the stage more vertical room than the default 46% panel */
+  /* Horizontal pan of the background (see wireStageBackgroundPan in main.js) */
+  #game-screen.is-active .stage {
+    touch-action: none;
+  }
+
+  /* Taller dialogue (was 40%) — more room for lines + choices; ship strip shrinks */
   .dialogue-panel {
-    height: 40%;
-    min-height: 200px;
-    max-height: 50%;
+    height: 54%;
+    min-height: 240px;
+    max-height: 66%;
     padding: 10px clamp(12px, 4vw, 28px) 14px;
     gap: 8px;
   }
 
   .dialogue-lines {
     gap: 6px;
+    min-height: 0;
   }
 
   .dialogue-line {
@@ -608,14 +614,14 @@ body {
     font-size: 0.95rem;
   }
 
-  /* Anchor aliens higher so waists/torsos clear the panel overlap */
+  /* Panel is taller — anchor aliens higher so they stay in the ship band */
   .alien-slot {
-    bottom: 30%;
+    bottom: 58%;
   }
 
   .alien-slot .alien {
-    width: clamp(96px, 24vw, 200px);
-    max-height: min(48vh, 380px);
+    width: clamp(88px, 22vw, 190px);
+    max-height: min(36vh, 260px);
   }
 
   .alien-label {
@@ -665,14 +671,15 @@ body {
     padding: 12px 24px;
     font-size: 1rem;
   }
-  /* Game: same portrait goals as ≤640 — keep panel compact */
+  /* Narrow width only: same tall panel as ≤640 portrait (do not shrink height) */
   .dialogue-panel {
-    min-height: 188px;
+    min-height: 220px;
     padding: 8px clamp(10px, 3vw, 24px) 12px;
     gap: 6px;
   }
   .dialogue-lines {
     gap: 4px;
+    min-height: 0;
   }
   .dialogue-line {
     font-size: 0.9rem;
@@ -683,11 +690,11 @@ body {
     font-size: 0.9rem;
   }
   .alien-slot {
-    bottom: 32%;
+    bottom: 56%;
   }
   .alien-slot .alien {
-    width: clamp(88px, 22vw, 170px);
-    max-height: min(46vh, 340px);
+    width: clamp(84px, 21vw, 165px);
+    max-height: min(34vh, 240px);
   }
   .app-footer {
     font-size: 0.78rem;
