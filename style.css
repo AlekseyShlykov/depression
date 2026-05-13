@@ -1,0 +1,655 @@
+/* =========================================================
+   The Earthling — prototype styles
+   ========================================================= */
+
+:root {
+  --bg: #0a0a12;
+  --panel: rgba(8, 8, 20, 0.78);
+  --panel-border: rgba(255, 255, 255, 0.12);
+  --text: #f3f3f7;
+  --text-muted: #b9b9c7;
+  --accent: #ffd166;
+  --accent-strong: #ffb703;
+  --choice-bg: rgba(255, 255, 255, 0.06);
+  --choice-bg-hover: rgba(255, 209, 102, 0.18);
+  --footer-bg: rgba(0, 0, 0, 0.55);
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+  --radius: 14px;
+  --footer-h: 44px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  /* dvh in supporting browsers handles iOS Safari's collapsing URL bar */
+  height: 100dvh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Inter", "Helvetica Neue", system-ui, -apple-system, "Segoe UI",
+    Roboto, "Noto Sans", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow: hidden;
+  /* prevent over-scroll bounce + iOS double-tap zoom on tap targets */
+  overscroll-behavior: none;
+  touch-action: manipulation;
+}
+
+#app {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---------- Screens ---------- */
+.screen {
+  position: absolute;
+  inset: 0;
+  bottom: var(--footer-h);
+  display: none;
+}
+
+.screen.is-active {
+  display: block;
+  animation: screenIn 0.35s ease both;
+}
+
+/* Game screen: no opacity fade-in — it fights the black intro veil (nested opacity)
+   and can leave the stage invisible; title screen keeps screenIn. */
+#game-screen.is-active {
+  animation: none;
+  opacity: 1;
+}
+
+@keyframes screenIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ---------- Title screen ---------- */
+#title-screen.is-active {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.title-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #000;
+}
+
+.title-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+      ellipse at center,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0.55) 80%
+    ),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.45));
+}
+
+.title-overlay {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  padding: 32px;
+  text-align: center;
+}
+
+.title-text {
+  margin: 0;
+  font-size: clamp(2.4rem, 7vw, 5rem);
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: #fff;
+  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.6),
+    0 2px 6px rgba(0, 0, 0, 0.55);
+  animation: titleIn 0.8s ease-out both;
+}
+
+@keyframes titleIn {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---------- Buttons ---------- */
+.primary-btn {
+  appearance: none;
+  border: none;
+  background: var(--accent);
+  color: #1a1a2a;
+  font-weight: 700;
+  font-size: 1.05rem;
+  padding: 14px 36px;
+  border-radius: 999px;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: transform 0.15s ease, background 0.2s ease, box-shadow 0.2s ease;
+  animation: titleIn 1s ease-out 0.15s both;
+}
+
+.primary-btn:hover {
+  background: var(--accent-strong);
+  transform: translateY(-1px);
+}
+
+.primary-btn:active {
+  transform: translateY(0);
+}
+
+.ghost-btn {
+  appearance: none;
+  background: transparent;
+  color: var(--text);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  line-height: 1.2;
+  min-height: 36px;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.ghost-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.7);
+}
+
+#lang-toggle-title {
+  margin-top: 8px;
+}
+
+/* ---------- Game screen layout ----------
+   We layer the dialogue panel on top of a full-bleed stage, so the aliens'
+   lower halves can be hidden "behind" the panel (giving the peek-out look).
+   NOTE: do NOT set `position` or `display` directly on #game-screen — both
+   are inherited from `.screen` (position: absolute; inset: 0; ...).
+   Overriding `position` to `relative` collapses the height to 0 because
+   `.stage` and `.dialogue-panel` inside are themselves `position: absolute`. */
+
+.stage {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: #000;
+}
+
+.stage-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.stage-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 50%,
+    rgba(0, 0, 0, 0.55) 100%
+  );
+}
+
+/* ---------- Aliens ---------- */
+.aliens {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.alien-slot {
+  position: absolute;
+  bottom: 15%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.alien-slot--left {
+  left: 0;
+  width: 45%;
+}
+
+.alien-slot--right {
+  right: 0;
+  width: 45%;
+}
+
+.alien-label {
+  margin-top: 6px;
+  max-width: 100%;
+  padding: 0 6px;
+  font-size: clamp(0.68rem, 2.4vw, 0.88rem);
+  font-weight: 700;
+  text-align: center;
+  line-height: 1.2;
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.95), 0 0 12px rgba(0, 0, 0, 0.65);
+}
+
+.alien-slot .alien {
+  position: relative;
+  bottom: auto;
+  left: auto;
+  right: auto;
+  width: clamp(120px, 28vw, 300px);
+  max-width: 100%;
+  height: auto;
+  max-height: 68%;
+  transform: translateX(0) scale(0.92);
+  filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.55));
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.45s ease, opacity 0.45s ease;
+  transform-origin: bottom center;
+  will-change: transform;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* Idle (both): stay in place — no entrance replay when returning to the game. */
+
+/* Speaking: larger + brighter */
+.alien-slot .alien.is-speaking {
+  transform: translateX(0) scale(1.08);
+  filter: drop-shadow(0 14px 22px rgba(0, 0, 0, 0.6))
+    drop-shadow(0 0 22px rgba(255, 209, 102, 0.5)) brightness(1.1)
+    saturate(1.12);
+  z-index: 2;
+}
+
+/* Silent partner: smaller + dimmer */
+.alien-slot .alien.is-dimmed {
+  transform: translateX(0) scale(0.86);
+  filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.5)) brightness(0.62)
+    saturate(0.78);
+}
+
+/* ---------- Dialogue panel ----------
+   Fixed proportion (not auto) so the aliens' lower halves are reliably
+   covered regardless of how much text the current passage has. */
+.dialogue-panel {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 3;
+  background: var(--panel);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-top: 1px solid var(--panel-border);
+  padding: 14px clamp(16px, 4vw, 40px) 18px;
+  height: 46%;
+  min-height: 260px;
+  max-height: 60%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.dialogue-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.dialogue-lines {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-right: 4px;
+}
+
+.dialogue-line {
+  font-size: clamp(0.95rem, 1.6vw, 1.15rem);
+  line-height: 1.4;
+  opacity: 0;
+  transform: translateY(6px);
+  animation: lineIn 0.4s ease-out forwards;
+  padding: 2px 0;
+}
+
+@keyframes lineIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dialogue-line[data-speaker="alien1"] .text {
+  border-left: 3px solid rgba(138, 211, 255, 0.75);
+  padding-left: 10px;
+}
+
+.dialogue-line[data-speaker="alien2"] .text {
+  border-left: 3px solid rgba(255, 180, 209, 0.75);
+  padding-left: 10px;
+}
+
+.dialogue-line[data-speaker="narrator"] {
+  font-style: italic;
+  color: var(--text-muted);
+}
+
+/* ---------- Choices ---------- */
+.choices {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.choice-btn {
+  appearance: none;
+  text-align: left;
+  background: var(--choice-bg);
+  color: var(--text);
+  border: 1px solid var(--panel-border);
+  border-radius: var(--radius);
+  padding: 12px 16px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease,
+    transform 0.1s ease;
+  opacity: 0;
+  transform: translateY(6px);
+  animation: lineIn 0.35s ease-out forwards;
+}
+
+.choice-btn:hover {
+  background: var(--choice-bg-hover);
+  border-color: rgba(255, 209, 102, 0.55);
+}
+
+.choice-btn:active {
+  transform: translateY(0) scale(0.99);
+}
+
+.choices-end {
+  color: var(--text-muted);
+  font-style: italic;
+  padding: 6px 4px;
+}
+
+/* ---------- End-of-story email ---------- */
+.end-email-panel {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 4px;
+  border-top: 1px solid var(--panel-border);
+}
+
+/* Author `display` must not override the HTML `hidden` attribute. */
+.end-email-panel[hidden],
+.end-email-form[hidden],
+.end-email-thanks[hidden],
+.end-email-error[hidden] {
+  display: none !important;
+}
+
+.end-email-lead {
+  margin: 0;
+  font-size: clamp(0.88rem, 1.4vw, 1rem);
+  line-height: 1.35;
+  color: var(--text-muted);
+}
+
+.end-email-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.end-email-label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.end-email-input {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--panel-border);
+  background: rgba(0, 0, 0, 0.35);
+  color: var(--text);
+  font: inherit;
+  font-size: 1rem;
+}
+
+.end-email-input:focus {
+  outline: none;
+  border-color: rgba(255, 209, 102, 0.45);
+}
+
+.end-email-submit {
+  align-self: flex-start;
+  min-width: 120px;
+}
+
+.end-email-thanks,
+.end-email-error {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.35;
+}
+
+.end-email-thanks {
+  color: var(--accent);
+}
+
+.end-email-error {
+  color: #ff8a8a;
+}
+
+/* ---------- Footer ---------- */
+.app-footer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: var(--footer-h);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--footer-bg);
+  color: #e6e6f0;
+  font-size: 0.85rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  z-index: 10;
+}
+
+.app-footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.app-footer a:hover {
+  text-decoration: underline;
+}
+
+.footer-sep {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.footer-music-wrap {
+  align-items: center;
+  gap: 8px;
+}
+
+/* Author `display` must not override the HTML `hidden` attribute */
+.footer-music-wrap[hidden] {
+  display: none !important;
+}
+
+.footer-music-wrap:not([hidden]) {
+  display: inline-flex;
+}
+
+.footer-music-btn {
+  appearance: none;
+  margin: 0;
+  padding: 0 2px;
+  border: none;
+  background: transparent;
+  color: var(--accent);
+  font: inherit;
+  font-size: inherit;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.footer-music-btn:hover {
+  text-decoration: underline;
+}
+
+.footer-music-btn[aria-pressed="true"] {
+  color: #fff5d6;
+}
+
+/* ---------- Responsive ----------
+   We tune three breakpoints:
+   1. Phones in portrait — narrower viewport, more vertical room for dialogue.
+   2. Phones / iPad split-view in landscape — VERY little vertical room,
+      dialogue must shrink hard and aliens must be small but visible.
+   3. Tiny phones (≤ 360px) — make sure title fits and choices stay readable.
+*/
+
+/* Phone portrait — taller dialogue panel, slightly smaller aliens. */
+@media (max-width: 640px) and (orientation: portrait) {
+  .dialogue-panel {
+    height: 50%;
+    min-height: 260px;
+    max-height: 60%;
+    gap: 10px;
+  }
+  .dialogue-lines {
+    gap: 6px;
+  }
+  .alien-slot {
+    bottom: 22%;
+  }
+  .alien-slot .alien {
+    width: clamp(112px, 32vw, 210px);
+  }
+}
+
+/* Anything short (landscape phones, split-view, etc.) */
+@media (max-height: 500px) {
+  .dialogue-panel {
+    height: 56%;
+    min-height: 0;
+    max-height: 70%;
+    padding: 10px clamp(12px, 3vw, 32px) 12px;
+    gap: 8px;
+  }
+  .dialogue-line {
+    padding: 2px 0;
+    font-size: clamp(0.95rem, 1.6vh, 1.05rem);
+  }
+  .choice-btn {
+    padding: 10px 14px;
+    font-size: 0.95rem;
+  }
+  .alien-slot {
+    bottom: 30%;
+  }
+  .alien-slot .alien {
+    width: clamp(72px, 13vw, 160px);
+    max-height: 88%;
+  }
+  .title-text {
+    font-size: clamp(2rem, 6vh, 3.4rem);
+  }
+}
+
+/* Tiny phones (e.g. iPhone SE 1st gen, ~320px wide) */
+@media (max-width: 360px) {
+  :root {
+    --footer-h: 40px;
+  }
+  .title-text {
+    font-size: 2rem;
+  }
+  .primary-btn {
+    padding: 12px 24px;
+    font-size: 1rem;
+  }
+  /* Taller dialogue panel so both lines + 2 choices fit without scrolling.
+     We compensate by making aliens shorter and lower so they still peek
+     out above the panel. */
+  .dialogue-panel {
+    height: 56%;
+    min-height: 280px;
+    padding: 10px clamp(12px, 4vw, 32px) 12px;
+    gap: 8px;
+  }
+  .dialogue-lines {
+    gap: 4px;
+  }
+  .dialogue-line {
+    font-size: 0.92rem;
+    line-height: 1.35;
+  }
+  .choice-btn {
+    padding: 10px 14px;
+    font-size: 0.92rem;
+  }
+  .alien-slot {
+    bottom: 30%;
+  }
+  .alien-slot .alien {
+    width: clamp(100px, 28vw, 180px);
+  }
+  .app-footer {
+    font-size: 0.78rem;
+    gap: 6px;
+  }
+  .dialogue-header .ghost-btn {
+    padding: 6px 12px;
+    font-size: 0.82rem;
+    min-height: 32px;
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "lang": "en",
+  "title": "The Earthling",
+  "start": "Start Game",
+  "back": "Back",
+  "footer": {
+    "credit": "Created by Alex Shlykov",
+    "linkLabel": "buildtounderstand.dev",
+    "linkUrl": "https://buildtounderstand.dev/",
+    "musicPlay": "Music",
+    "musicPause": "Pause",
+    "musicAriaPlay": "Play background music",
+    "musicAriaPause": "Pause background music"
+  },
+  "switchLanguage": "Русский",
+  "loading": "Loading…",
+  "errorLoading": "Could not load story.",
+  "continue": "Next",
+  "speakers": {
+    "alien1": "Alien 1",
+    "alien2": "Alien 2",
+    "narrator": ""
+  },
+  "endForm": {
+    "lead": "The story ends here. If you want a note when there is more, leave your email.",
+    "label": "Email",
+    "submit": "Send",
+    "thanks": "Thank you — we will be in touch.",
+    "error": "Could not send. Check your connection and try again.",
+    "emailSubject": "The Earthling — mailing list"
+  }
+}

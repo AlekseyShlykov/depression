@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="dark" />
+    <title>The Earthling</title>
+    <!-- Only preload the default-language background; the other one is
+         fetched lazily when the user toggles the language. -->
+    <link rel="icon" href="data:," />
+    <link rel="preload" href="assets/ensheep.png" as="image" />
+    <link rel="preload" href="assets/alien1.png" as="image" />
+    <link rel="preload" href="assets/alien2.png" as="image" />
+    <link rel="stylesheet" href="style.css?v=7" />
+  </head>
+  <body>
+    <div id="app">
+      <!-- TITLE SCREEN -->
+      <section id="title-screen" class="screen is-active" aria-label="Title screen">
+        <div class="title-bg" data-bg="title"></div>
+        <div class="title-overlay">
+          <h1 id="title-text" class="title-text">The Earthling</h1>
+          <button id="start-btn" class="primary-btn" type="button">Start Game</button>
+          <button id="lang-toggle-title" class="ghost-btn" type="button" aria-label="Switch language">
+            Русский
+          </button>
+        </div>
+      </section>
+
+      <!-- GAME SCREEN -->
+      <section id="game-screen" class="screen" aria-label="Game screen">
+        <div class="stage">
+          <div class="stage-bg" data-bg="game"></div>
+          <div class="aliens">
+            <div class="alien-slot alien-slot--left">
+              <img
+                id="alien-1"
+                class="alien alien--left"
+                src="assets/alien1.png"
+                alt=""
+              />
+              <div id="alien-1-label" class="alien-label" aria-hidden="true"></div>
+            </div>
+            <div class="alien-slot alien-slot--right">
+              <img
+                id="alien-2"
+                class="alien alien--right"
+                src="assets/alien2.png"
+                alt=""
+              />
+              <div id="alien-2-label" class="alien-label" aria-hidden="true"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="dialogue-panel" role="region" aria-live="polite">
+          <div class="dialogue-header">
+            <button id="back-btn" class="ghost-btn" type="button">Back</button>
+            <button id="lang-toggle-game" class="ghost-btn" type="button">Русский</button>
+          </div>
+          <div id="dialogue-lines" class="dialogue-lines"></div>
+          <div id="choices" class="choices"></div>
+          <div id="end-email-panel" class="end-email-panel" hidden style="display:none">
+            <p id="end-email-lead" class="end-email-lead"></p>
+            <form
+              id="end-email-form"
+              class="end-email-form"
+              action="https://formspree.io/f/mjgldbwb"
+              method="POST"
+            >
+              <label class="end-email-label">
+                <span id="end-email-label-text"></span>
+                <input
+                  id="end-email-input"
+                  class="end-email-input"
+                  type="email"
+                  name="email"
+                  required
+                  autocomplete="email"
+                  inputmode="email"
+                />
+              </label>
+              <button id="end-email-submit" class="primary-btn end-email-submit" type="submit"></button>
+            </form>
+            <p id="end-email-thanks" class="end-email-thanks" hidden style="display:none" role="status" aria-live="polite"></p>
+            <p id="end-email-error" class="end-email-error" hidden style="display:none" role="alert"></p>
+          </div>
+        </div>
+      </section>
+
+      <footer class="app-footer">
+        <span id="footer-credit">Created by Alex Shlykov</span>
+        <span class="footer-sep">·</span>
+        <a id="footer-link" href="https://buildtounderstand.dev/" target="_blank" rel="noopener noreferrer">
+          buildtounderstand.dev
+        </a>
+        <span id="footer-music-wrap" class="footer-music-wrap" hidden>
+          <span class="footer-sep" aria-hidden="true">·</span>
+          <button id="music-btn" class="footer-music-btn" type="button" aria-pressed="false">
+            Music
+          </button>
+        </span>
+      </footer>
+    </div>
+
+    <script type="module" src="js/main.js?v=8"></script>
+  </body>
+</html>

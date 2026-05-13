@@ -1,0 +1,32 @@
+{
+  "lang": "ru",
+  "title": "Землянин",
+  "start": "Начать игру",
+  "back": "Назад",
+  "footer": {
+    "credit": "Created by Alex Shlykov",
+    "linkLabel": "buildtounderstand.dev",
+    "linkUrl": "https://buildtounderstand.dev/",
+    "musicPlay": "Музыка",
+    "musicPause": "Пауза",
+    "musicAriaPlay": "Включить фоновую музыку",
+    "musicAriaPause": "Пауза фоновой музыки"
+  },
+  "switchLanguage": "English",
+  "loading": "Загрузка…",
+  "errorLoading": "Не удалось загрузить историю.",
+  "continue": "Дальше",
+  "speakers": {
+    "alien1": "Инопланетянин 1",
+    "alien2": "Инопланетянин 2",
+    "narrator": ""
+  },
+  "endForm": {
+    "lead": "На этом история заканчивается. Если хотите узнать о продолжении — оставьте email.",
+    "label": "Email",
+    "submit": "Отправить",
+    "thanks": "Спасибо — мы напишем, когда будет новое.",
+    "error": "Не удалось отправить. Проверьте соединение и попробуйте снова.",
+    "emailSubject": "Землянин — рассылка"
+  }
+}
