@@ -354,12 +354,12 @@ body {
 }
 
 .dialogue-line[data-speaker="alien1"] .text {
-  border-left: 3px solid rgba(138, 211, 255, 0.75);
+  border-left: 3px solid rgba(110, 200, 130, 0.88);
   padding-left: 10px;
 }
 
 .dialogue-line[data-speaker="alien2"] .text {
-  border-left: 3px solid rgba(255, 180, 209, 0.75);
+  border-left: 3px solid rgba(255, 255, 255, 0.88);
   padding-left: 10px;
 }
 
@@ -617,14 +617,14 @@ body {
     font-size: 0.95rem;
   }
 
-  /* ~Half the sprites visible above the panel (classic peek) */
+  /* Bottom of slot ≈ top of dialogue: torsos/waists sit in the ship strip */
   .alien-slot {
-    bottom: 26%;
+    bottom: calc(var(--dialogue-panel-height) + 3%);
   }
 
   .alien-slot .alien {
     width: clamp(96px, 24vw, 200px);
-    max-height: min(46vh, 340px);
+    max-height: min(42vh, 300px);
   }
 
   .alien-label {
@@ -692,12 +692,9 @@ body {
     padding: 10px 12px;
     font-size: 0.9rem;
   }
-  .alien-slot {
-    bottom: 26%;
-  }
   .alien-slot .alien {
     width: clamp(92px, 23vw, 185px);
-    max-height: min(44vh, 320px);
+    max-height: min(40vh, 300px);
   }
   .app-footer {
     font-size: 0.78rem;
