@@ -551,22 +551,26 @@ body {
 
 /* ---------- Responsive ----------
    Breakpoints:
-   1. Phone portrait — see dedicated block below (stage bg fit, shorter panel,
-      aliens raised so torsos stay visible above the dialogue).
+   1. Phone portrait — shorter dialogue panel, aliens raised, stage bg `cover`
+      anchored to the bottom (avoids `contain` letterboxing hiding the ship).
    2. Phones / iPad split-view in landscape — very little vertical room;
       dialogue shrinks and aliens scale down.
    3. Tiny phones (≤ 360px) — title + tap targets; game tweaks align with (1).
 */
 
 /* ========================================================================
-   Phones — portrait (primary mobile gameplay; avoids heavy ship crop +
-   aliens cut off at the chin).
+   Phones — portrait (shorter panel + bottom-anchored cover bg so the ship
+   fills the stage; `contain` was removed — it left almost all-black screens).
    ======================================================================== */
 @media (max-width: 640px) and (orientation: portrait) {
-  /* Show more of the illustration: not full-bleed cover (which crops the
-     sides on tall phones). Letterboxing on the sides is acceptable. */
+  /*
+   * Do NOT use `contain` here: on a tall phone a wide illustration scales to
+   * full viewport width, ends up only ~20% of the height, and the rest is
+   * solid black — the ship disappears. `cover` + bottom anchoring keeps the
+   * art filling the stage while favouring the lower part (aliens / deck).
+   */
   .stage-bg {
-    background-size: contain;
+    background-size: cover;
     background-position: center bottom;
   }
 
