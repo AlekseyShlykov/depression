@@ -16,11 +16,6 @@
   "loading": "Loading…",
   "errorLoading": "Could not load story.",
   "continue": "Next",
-  "speakers": {
-    "alien1": "Alien 1",
-    "alien2": "Alien 2",
-    "narrator": ""
-  },
   "endForm": {
     "lead": "The story ends here. If you want a note when there is more, leave your email.",
     "label": "Email",

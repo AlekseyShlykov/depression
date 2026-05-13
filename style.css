@@ -250,18 +250,6 @@ body {
   width: 45%;
 }
 
-.alien-label {
-  margin-top: 6px;
-  max-width: 100%;
-  padding: 0 6px;
-  font-size: clamp(0.68rem, 2.4vw, 0.88rem);
-  font-weight: 700;
-  text-align: center;
-  line-height: 1.2;
-  color: #fff;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.95), 0 0 12px rgba(0, 0, 0, 0.65);
-}
-
 .alien-slot .alien {
   position: relative;
   bottom: auto;
@@ -625,11 +613,6 @@ body {
   .alien-slot .alien {
     width: clamp(96px, 24vw, 200px);
     max-height: min(42vh, 300px);
-  }
-
-  .alien-label {
-    font-size: clamp(0.62rem, 2.2vw, 0.82rem);
-    margin-top: 4px;
   }
 }
 

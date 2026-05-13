@@ -23,8 +23,6 @@ const els = {
   backBtn: $("#back-btn"),
   alien1: $("#alien-1"),
   alien2: $("#alien-2"),
-  alien1Label: $("#alien-1-label"),
-  alien2Label: $("#alien-2-label"),
   lines: $("#dialogue-lines"),
   choices: $("#choices"),
   endEmailPanel: $("#end-email-panel"),
@@ -272,11 +270,6 @@ function applyStaticStrings() {
   els.titleBg.style.backgroundImage = `url("${url}")`;
   els.gameBg.style.backgroundImage = `url("${url}")`;
   resetStageBgPan();
-
-  if (els.alien1Label)
-    els.alien1Label.textContent = t("speakers.alien1", "Alien 1");
-  if (els.alien2Label)
-    els.alien2Label.textContent = t("speakers.alien2", "Alien 2");
 
   if (els.endEmailLead)
     els.endEmailLead.textContent = t(

@@ -88,9 +88,9 @@ You may also use `alien1:` / `alien2:` in lowercase.
 * **Typewriter:** each line appears **character by character** (slightly
   longer pauses after punctuation). With **`prefers-reduced-motion: reduce`**
   the full line appears at once instead.
-* **In the dialogue box, only the line after the colon is shown.** Character
-  names appear under the portraits; edit them in `locales/<lang>.json` under
-  `speakers.alien1` and `speakers.alien2`.
+* **In the dialogue box, only the line after the colon is shown.** Who is
+  speaking is shown only by the **alien highlight** (enlarged portrait) while
+  that line types.
 * Lines with no `Speaker:` prefix become **narrator** lines.
 * **System commands** — a whole line starting with `//` and non-empty text
   after it (e.g. `//включи музыку`) is **not** shown in the dialogue. It runs
@@ -107,8 +107,9 @@ You may also use `alien1:` / `alien2:` in lowercase.
   linked one after another so each beat has one speaker; the engine always
   enlarges only the alien who is typing the current line.
 
-To add another named speaker later, add a `speakers.<id>` key in each locale
-file and use that `<id>:` prefix in the story JSON.
+To add another named speaker later, use a new `Something:` prefix in the
+story JSON and extend the dialogue engine / styles if you need a distinct
+highlight or layout for that id.
 
 ## Switching the default language
 
