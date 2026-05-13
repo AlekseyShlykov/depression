@@ -125,6 +125,7 @@ function applyStageBgPan() {
   if (!els.gameBg) return;
   if (!stagePanMediaQuery().matches) {
     els.gameBg.style.backgroundPosition = "";
+    els.gameBg.style.transition = "";
     return;
   }
   els.gameBg.style.backgroundPosition = `${stageBgPanPct}% bottom`;
@@ -132,7 +133,54 @@ function applyStageBgPan() {
 
 function resetStageBgPan() {
   stageBgPanPct = 50;
+  if (els.gameBg) els.gameBg.style.transition = "";
   applyStageBgPan();
+}
+
+/** After pan release: ease background back to horizontal center (50%). */
+function snapStageBgPanToCenter() {
+  const bg = els.gameBg;
+  if (!bg || !stagePanMediaQuery().matches) return;
+  if (Math.abs(stageBgPanPct - 50) < 0.25) {
+    stageBgPanPct = 50;
+    bg.style.transition = "";
+    applyStageBgPan();
+    return;
+  }
+  const reduce =
+    typeof window !== "undefined" &&
+    window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
+  if (reduce) {
+    stageBgPanPct = 50;
+    bg.style.transition = "";
+    applyStageBgPan();
+    return;
+  }
+  bg.style.transition =
+    "background-position 0.48s cubic-bezier(0.22, 1, 0.36, 1)";
+  stageBgPanPct = 50;
+  applyStageBgPan();
+  let cleaned = false;
+  let tid = 0;
+  const clear = () => {
+    if (cleaned) return;
+    cleaned = true;
+    bg.style.transition = "";
+    bg.removeEventListener("transitionend", onEnd);
+    window.clearTimeout(tid);
+  };
+  const onEnd = (e) => {
+    if (e.target !== bg) return;
+    if (
+      e.propertyName !== "background-position" &&
+      e.propertyName !== "background-position-x"
+    ) {
+      return;
+    }
+    clear();
+  };
+  bg.addEventListener("transitionend", onEnd);
+  tid = window.setTimeout(clear, 520);
 }
 
 function resetEndEmailUi() {
@@ -423,6 +471,7 @@ function wireStageBackgroundPan() {
     stageBgPanDrag = null;
     if (!mq.matches) {
       stageBgPanPct = 50;
+      bg.style.transition = "";
       bg.style.backgroundPosition = "";
     } else {
       applyStageBgPan();
@@ -439,6 +488,7 @@ function wireStageBackgroundPan() {
       startX: e.clientX,
       startPct: stageBgPanPct,
     };
+    bg.style.transition = "none";
     try {
       stage.setPointerCapture(e.pointerId);
     } catch (_) {
@@ -466,6 +516,7 @@ function wireStageBackgroundPan() {
       /* ignore */
     }
     stageBgPanDrag = null;
+    snapStageBgPanToCenter();
   };
   stage.addEventListener("pointerup", endPan);
   stage.addEventListener("pointercancel", endPan);

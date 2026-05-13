@@ -551,27 +551,31 @@ body {
 
 /* ---------- Responsive ----------
    Breakpoints:
-   1. Phone portrait — taller dialogue panel for text + choices; smaller ship
-      strip; aliens raised above the panel; stage bg `cover` + bottom anchor.
+   1. Phone portrait — tall dialogue; ship bg in a top strip (full art height,
+      horizontal pan); aliens peek ~half over the panel edge.
    2. Phones / iPad split-view in landscape — very little vertical room;
       dialogue shrinks and aliens scale down.
    3. Tiny phones (≤ 360px) — title + tap targets; dialogue stays readable.
 */
 
 /* ========================================================================
-   Phones — portrait (taller dialogue so text + buttons fit; smaller stage
-   strip for the ship; bottom-anchored cover bg).
+   Phones — portrait: dialogue height + matching top strip for the bg image
+   (no vertical crop in the strip; width extends — pan in main.js).
    ======================================================================== */
 @media (max-width: 640px) and (orientation: portrait) {
-  /*
-   * Do NOT use `contain` here: on a tall phone a wide illustration scales to
-   * full viewport width, ends up only ~20% of the height, and the rest is
-   * solid black — the ship disappears. `cover` + bottom anchoring keeps the
-   * art filling the stage while favouring the lower part (aliens / deck).
-   */
+  #game-screen {
+    --dialogue-panel-height: 54%;
+  }
+
   .stage-bg {
-    background-size: cover;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: auto;
+    height: calc(100% - var(--dialogue-panel-height));
+    background-size: auto 100%;
     background-position: center bottom;
+    background-repeat: no-repeat;
   }
 
   .stage-bg::after {
@@ -581,7 +585,7 @@ body {
       rgba(0, 0, 0, 0.12) 0%,
       rgba(0, 0, 0, 0) 35%,
       rgba(0, 0, 0, 0.35) 70%,
-      rgba(0, 0, 0, 0.65) 100%
+      rgba(0, 0, 0, 0.55) 100%
     );
   }
 
@@ -590,9 +594,8 @@ body {
     touch-action: none;
   }
 
-  /* Taller dialogue (was 40%) — more room for lines + choices; ship strip shrinks */
   .dialogue-panel {
-    height: 54%;
+    height: var(--dialogue-panel-height);
     min-height: 240px;
     max-height: 66%;
     padding: 10px clamp(12px, 4vw, 28px) 14px;
@@ -614,14 +617,14 @@ body {
     font-size: 0.95rem;
   }
 
-  /* Panel is taller — anchor aliens higher so they stay in the ship band */
+  /* ~Half the sprites visible above the panel (classic peek) */
   .alien-slot {
-    bottom: 58%;
+    bottom: 26%;
   }
 
   .alien-slot .alien {
-    width: clamp(88px, 22vw, 190px);
-    max-height: min(36vh, 260px);
+    width: clamp(96px, 24vw, 200px);
+    max-height: min(46vh, 340px);
   }
 
   .alien-label {
@@ -690,11 +693,11 @@ body {
     font-size: 0.9rem;
   }
   .alien-slot {
-    bottom: 56%;
+    bottom: 26%;
   }
   .alien-slot .alien {
-    width: clamp(84px, 21vw, 165px);
-    max-height: min(34vh, 240px);
+    width: clamp(92px, 23vw, 185px);
+    max-height: min(44vh, 320px);
   }
   .app-footer {
     font-size: 0.78rem;
