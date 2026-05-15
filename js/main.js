@@ -274,7 +274,7 @@ function applyStaticStrings() {
   if (els.endEmailLead)
     els.endEmailLead.textContent = t(
       "endForm.lead",
-      "The story ends here. If you want a note when there is more, leave your email."
+      "This game is still in development. If you'd like to know when the full version is out, leave your email."
     );
   if (els.endEmailLabelText)
     els.endEmailLabelText.textContent = t("endForm.label", "Email");
