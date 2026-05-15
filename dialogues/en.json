@@ -5,7 +5,7 @@
   "creatorVersion": "2.10.0",
   "schemaName": "Twine to JSON",
   "schemaVersion": "0.0.6",
-  "createdAtMs": 1778696678000,
+  "createdAtMs": 1778827903831,
   "gameTitle": "What depression looks like... from an alien's perspective",
   "passages": [
     {
@@ -31,7 +31,7 @@
       "name": "What's happening?",
       "tags": "",
       "id": "2",
-      "text": "Alien1: We study people and their behavior — and you're our guest. We're scientists! Our group, specifically, studies diseases. To help you feel more comfortable, we even dressed like human scientists — in lab coats!\nAlien2: We're studying an illness that about fifteen to eighteen percent of humanity runs into at some point in life. Depression.\n\n[[But why that one?]]\n[[What do you need me for?]]",
+      "text": "Alien1: We study people and their behavior, and you're our guest. Our group, specifically, studies diseases. To help you feel more comfortable, we even dressed like human scientists — in lab coats!\nAlien2: We're studying an illness that 15–18% of humanity encounters over a lifetime, and which more often than others leads to limitations in the ability to work. Depression.\n\n[[But why that one?]]\n[[What do you need me for?]]",
       "links": [
         {
           "linkText": "But why that one?",
@@ -44,13 +44,13 @@
           "original": "[[What do you need me for?]]"
         }
       ],
-      "cleanText": "Alien1: We study people and their behavior — and you're our guest. We're scientists! Our group, specifically, studies diseases. To help you feel more comfortable, we even dressed like human scientists — in lab coats!\nAlien2: We're studying an illness that about fifteen to eighteen percent of humanity runs into at some point in life. Depression."
+      "cleanText": "Alien1: We study people and their behavior, and you're our guest. Our group, specifically, studies diseases. To help you feel more comfortable, we even dressed like human scientists — in lab coats!\nAlien2: We're studying an illness that 15–18% of humanity encounters over a lifetime, and which more often than others leads to limitations in the ability to work. Depression."
     },
     {
       "name": "Who are you?",
       "tags": "",
       "id": "3",
-      "text": "Alien1: We're scientists! To help you feel more comfortable, we even dressed like human scientists — in lab coats! We study people and their behavior. Our group, specifically, focuses on diseases.\nAlien2: We're studying an illness that about fifteen to eighteen percent of humanity runs into at some point in life. Depression.\n\n[[But why that one?]]\n[[What do you need me for?]]",
+      "text": "Alien1: We're scientists! To help you feel more comfortable, we even dressed like human scientists — in lab coats! We study people and their behavior. Our group, specifically, studies diseases.\nAlien2: We're studying an illness that 15–18% of humanity encounters over a lifetime, and which more often than others leads to limitations in the ability to work. Depression.\n\n[[But why that one?]]\n[[What do you need me for?]]",
       "links": [
         {
           "linkText": "But why that one?",
@@ -63,18 +63,18 @@
           "original": "[[What do you need me for?]]"
         }
       ],
-      "cleanText": "Alien1: We're scientists! To help you feel more comfortable, we even dressed like human scientists — in lab coats! We study people and their behavior. Our group, specifically, focuses on diseases.\nAlien2: We're studying an illness that about fifteen to eighteen percent of humanity runs into at some point in life. Depression."
+      "cleanText": "Alien1: We're scientists! To help you feel more comfortable, we even dressed like human scientists — in lab coats! We study people and their behavior. Our group, specifically, studies diseases.\nAlien2: We're studying an illness that 15–18% of humanity encounters over a lifetime, and which more often than others leads to limitations in the ability to work. Depression."
     },
     {
       "name": "But why that one?",
       "tags": "",
       "id": "4",
-      "text": "Alien2: The thing is, this diagnosis is very rarely correct. Roughly eighty percent of the time, depression isn't diagnosed. And the treatments people have come up with only work in about half of cases.\nAlien1: And many people think depression is just sadness. But we've studied brain biochemistry, neurotransmitters — we can say for sure it's a real illness. Like diabetes. Yet somehow it doesn't occur to you humans to tell a diabetic, \"Hey, c'mon, just make insulin, easy!\" But that's how people talk about depression.\n\nAlien1: Let's put on some music to make things a bit more pleasant.\n//play music\n\n[[Uh... but why do you need me?]]\n[[You've done a lot of research. But why do you need me?]]",
+      "text": "Alien1: Would you mind if we put on some music to create a more pleasant atmosphere? You can always turn it off at the bottom of the screen.\n//play music\n\nAlien2: The thing is, this diagnosis is very rarely made correctly. In roughly 80% of cases, depression isn't diagnosed. Among those who receive the correct diagnosis — a third won't respond to medication, a third will have terrible side effects, and only a third can be helped.\n\n[[Uh... probably, but why do you need me?]]\n[[You've done a lot of research. But why do you need me?]]",
       "links": [
         {
-          "linkText": "Uh... but why do you need me?",
-          "passageName": "Uh... but why do you need me?",
-          "original": "[[Uh... but why do you need me?]]"
+          "linkText": "Uh... probably, but why do you need me?",
+          "passageName": "Uh... probably, but why do you need me?",
+          "original": "[[Uh... probably, but why do you need me?]]"
         },
         {
           "linkText": "You've done a lot of research. But why do you need me?",
@@ -82,13 +82,13 @@
           "original": "[[You've done a lot of research. But why do you need me?]]"
         }
       ],
-      "cleanText": "Alien2: The thing is, this diagnosis is very rarely correct. Roughly eighty percent of the time, depression isn't diagnosed. And the treatments people have come up with only work in about half of cases.\nAlien1: And many people think depression is just sadness. But we've studied brain biochemistry, neurotransmitters — we can say for sure it's a real illness. Like diabetes. Yet somehow it doesn't occur to you humans to tell a diabetic, \"Hey, c'mon, just make insulin, easy!\" But that's how people talk about depression.\n\nAlien1: Let's put on some music to make things a bit more pleasant.\n//play music"
+      "cleanText": "Alien1: Would you mind if we put on some music to create a more pleasant atmosphere? You can always turn it off at the bottom of the screen.\n//play music\n\nAlien2: The thing is, this diagnosis is very rarely made correctly. In roughly 80% of cases, depression isn't diagnosed. Among those who receive the correct diagnosis — a third won't respond to medication, a third will have terrible side effects, and only a third can be helped."
     },
     {
       "name": "What do you need me for?",
       "tags": "",
       "id": "5",
-      "text": "Alien2: The thing is, we've hit a wall. We've run a lot of experiments on people; we've studied how depression works at the biochemical, biological, and genetic levels. Even so, we still don't have enough to understand how to treat it. We've read what humans have written on the subject, and it turns out an important part of treating depression is psychology. And we're not exactly experts in higher-primate psychology.\nAlien1: Let's put on some music to make things a bit more pleasant.\n//play music\n\n[[But why study depression specifically?]]",
+      "text": "Alien2: The thing is, we've hit a wall. We've run a lot of experiments on people; we've studied how depression works at the biochemical, biological, and genetic levels. But we still don't have enough knowledge to understand how to treat it.\nAlien2: We've studied what humans have written on this topic, and it turns out an important part of treating depression is psychology. And we're not very strong in higher-primate psychology, and we hope you can help us.\nAlien1: Would you mind if we put on some music to create a more pleasant atmosphere? You can always turn it off at the bottom of the screen.\n//play music\n\n[[But why study depression specifically?]]",
       "links": [
         {
           "linkText": "But why study depression specifically?",
@@ -96,13 +96,13 @@
           "original": "[[But why study depression specifically?]]"
         }
       ],
-      "cleanText": "Alien2: The thing is, we've hit a wall. We've run a lot of experiments on people; we've studied how depression works at the biochemical, biological, and genetic levels. Even so, we still don't have enough to understand how to treat it. We've read what humans have written on the subject, and it turns out an important part of treating depression is psychology. And we're not exactly experts in higher-primate psychology.\nAlien1: Let's put on some music to make things a bit more pleasant.\n//play music"
+      "cleanText": "Alien2: The thing is, we've hit a wall. We've run a lot of experiments on people; we've studied how depression works at the biochemical, biological, and genetic levels. But we still don't have enough knowledge to understand how to treat it.\nAlien2: We've studied what humans have written on this topic, and it turns out an important part of treating depression is psychology. And we're not very strong in higher-primate psychology, and we hope you can help us.\nAlien1: Would you mind if we put on some music to create a more pleasant atmosphere? You can always turn it off at the bottom of the screen.\n//play music"
     },
     {
-      "name": "Uh... but why do you need me?",
+      "name": "Uh... probably, but why do you need me?",
       "tags": "",
       "id": "6",
-      "text": "Alien2: The thing is, we've hit a wall. We've run a lot of experiments on people; we've studied how depression works at the biochemical, biological, and genetic levels. Even so, we still don't have enough to understand how to treat it. We've read what humans have written on the subject, and it turns out an important part of treating depression is psychology. And we're not exactly experts in higher-primate psychology.\n\n[[That makes more sense now]]",
+      "text": "Alien2: The thing is, we've hit a wall. We've run a lot of experiments on people; we've studied how depression works at the biochemical, biological, and genetic levels. But we still don't have enough knowledge to understand how to treat it.\nAlien2: We've studied what humans have written on this topic, and it turns out an important part of treating depression is psychology. And we're not very strong in higher-primate psychology, and we hope you can help us.\n\n[[That makes more sense now]]",
       "links": [
         {
           "linkText": "That makes more sense now",
@@ -110,13 +110,13 @@
           "original": "[[That makes more sense now]]"
         }
       ],
-      "cleanText": "Alien2: The thing is, we've hit a wall. We've run a lot of experiments on people; we've studied how depression works at the biochemical, biological, and genetic levels. Even so, we still don't have enough to understand how to treat it. We've read what humans have written on the subject, and it turns out an important part of treating depression is psychology. And we're not exactly experts in higher-primate psychology."
+      "cleanText": "Alien2: The thing is, we've hit a wall. We've run a lot of experiments on people; we've studied how depression works at the biochemical, biological, and genetic levels. But we still don't have enough knowledge to understand how to treat it.\nAlien2: We've studied what humans have written on this topic, and it turns out an important part of treating depression is psychology. And we're not very strong in higher-primate psychology, and we hope you can help us."
     },
     {
       "name": "You've done a lot of research. But why do you need me?",
       "tags": "",
       "id": "7",
-      "text": "Alien2: The thing is, we've hit a wall. We've run a lot of experiments on people; we've studied how depression works at the biochemical, biological, and genetic levels. Even so, we still don't have enough to understand how to treat it. We've read what humans have written on the subject, and it turns out an important part of treating depression is psychology. And we're not exactly experts in higher-primate psychology.\n\n[[That makes more sense now]]",
+      "text": "Alien2: The thing is, we've hit a wall. We've run a lot of experiments on people; we've studied how depression works at the biochemical, biological, and genetic levels. But we still don't have enough knowledge to understand how to treat it.\nAlien2: We've studied what humans have written on this topic, and it turns out an important part of treating depression is psychology. And we're not very strong in higher-primate psychology, and we hope you can help us.\n\n[[That makes more sense now]]",
       "links": [
         {
           "linkText": "That makes more sense now",
@@ -124,13 +124,84 @@
           "original": "[[That makes more sense now]]"
         }
       ],
-      "cleanText": "Alien2: The thing is, we've hit a wall. We've run a lot of experiments on people; we've studied how depression works at the biochemical, biological, and genetic levels. Even so, we still don't have enough to understand how to treat it. We've read what humans have written on the subject, and it turns out an important part of treating depression is psychology. And we're not exactly experts in higher-primate psychology."
+      "cleanText": "Alien2: The thing is, we've hit a wall. We've run a lot of experiments on people; we've studied how depression works at the biochemical, biological, and genetic levels. But we still don't have enough knowledge to understand how to treat it.\nAlien2: We've studied what humans have written on this topic, and it turns out an important part of treating depression is psychology. And we're not very strong in higher-primate psychology, and we hope you can help us."
     },
     {
       "name": "That makes more sense now",
       "tags": "",
       "id": "8",
-      "text": "Alien2: The thing is, this diagnosis is very rarely correct. Roughly eighty percent of the time, depression isn't diagnosed. And the treatments people have come up with only work in about half of cases.\nAlien1: And many people think depression is just sadness. But we've studied brain biochemistry, neurotransmitters — we can say for sure it's a real illness. Like diabetes. Yet somehow it doesn't occur to you humans to tell a diabetic, \"Hey, c'mon, just make insulin, easy!\" But that's how people talk about depression.\n\n[[You seem to know more than I do!]]",
+      "text": "Alien1: Also, help us figure this out. We've studied humans and we see that you use the word depression for very different things. For example, if you had a fight with a friend, you often say you're depressed. Is that the same depression?\n\n[[Probably... no]]\n[[That's depression]]",
+      "links": [
+        {
+          "linkText": "Probably... no",
+          "passageName": "Probably... no",
+          "original": "[[Probably... no]]"
+        },
+        {
+          "linkText": "That's depression",
+          "passageName": "That's depression",
+          "original": "[[That's depression]]"
+        }
+      ],
+      "cleanText": "Alien1: Also, help us figure this out. We've studied humans and we see that you use the word depression for very different things. For example, if you had a fight with a friend, you often say you're depressed. Is that the same depression?"
+    },
+    {
+      "name": "But why study depression specifically?",
+      "tags": "",
+      "id": "9",
+      "text": "Alien2: The thing is, this diagnosis is very rarely made correctly. In roughly 80% of cases, depression isn't diagnosed. Among those who receive the correct diagnosis — a third won't respond to medication, a third will have terrible side effects, and only a third can be helped.\n\n[[Got it]]",
+      "links": [
+        {
+          "linkText": "Got it",
+          "passageName": "Got it",
+          "original": "[[Got it]]"
+        }
+      ],
+      "cleanText": "Alien2: The thing is, this diagnosis is very rarely made correctly. In roughly 80% of cases, depression isn't diagnosed. Among those who receive the correct diagnosis — a third won't respond to medication, a third will have terrible side effects, and only a third can be helped."
+    },
+    {
+      "name": "You seem to know more than I do!",
+      "tags": "",
+      "id": "10",
+      "text": "Alien1: Yes, we've studied a lot. But much is still unclear, and we hope to figure it all out together with you.\nAlien2: For example, we're very interested in how depression affects people. The thing is, the human species is very resilient. When people end up in truly terrible situations — they get cancer, they lose limbs, they end up in concentration camps — people can still find something good in it.\n\n[[Yes, that's us]]\n[[But it's still very sad]]",
+      "links": [
+        {
+          "linkText": "Yes, that's us",
+          "passageName": "Yes, that's us",
+          "original": "[[Yes, that's us]]"
+        },
+        {
+          "linkText": "But it's still very sad",
+          "passageName": "But it's still very sad",
+          "original": "[[But it's still very sad]]"
+        }
+      ],
+      "cleanText": "Alien1: Yes, we've studied a lot. But much is still unclear, and we hope to figure it all out together with you.\nAlien2: For example, we're very interested in how depression affects people. The thing is, the human species is very resilient. When people end up in truly terrible situations — they get cancer, they lose limbs, they end up in concentration camps — people can still find something good in it."
+    },
+    {
+      "name": "Got it",
+      "tags": "",
+      "id": "11",
+      "text": "Alien1: Also, help us figure this out. We've studied humans and we see that you use the word depression for very different things. For example, if you had a fight with a friend, you often say you're depressed. Is that the same depression?\n\n[[Probably... no]]\n[[That's depression]]",
+      "links": [
+        {
+          "linkText": "Probably... no",
+          "passageName": "Probably... no",
+          "original": "[[Probably... no]]"
+        },
+        {
+          "linkText": "That's depression",
+          "passageName": "That's depression",
+          "original": "[[That's depression]]"
+        }
+      ],
+      "cleanText": "Alien1: Also, help us figure this out. We've studied humans and we see that you use the word depression for very different things. For example, if you had a fight with a friend, you often say you're depressed. Is that the same depression?"
+    },
+    {
+      "name": "Probably... no",
+      "tags": "",
+      "id": "12",
+      "text": "Alien2: We agree with you — our research shows it's more like sadness, not depression. After all, we've studied brain biochemistry, neurotransmitter function, and we can say for certain that depression is a real illness at the biological level. Like diabetes.\n\nAlien1: But for some reason it doesn't occur to you humans to tell a diabetic, \"Hey, what's wrong with you — just produce insulin, easy!\" But about depression you talk like this: \"Stop feeling sorry for yourself, come on, pull yourself together, get a grip!\"\n\n[[You seem to know more than I do!]]",
       "links": [
         {
           "linkText": "You seem to know more than I do!",
@@ -138,29 +209,57 @@
           "original": "[[You seem to know more than I do!]]"
         }
       ],
-      "cleanText": "Alien2: The thing is, this diagnosis is very rarely correct. Roughly eighty percent of the time, depression isn't diagnosed. And the treatments people have come up with only work in about half of cases.\nAlien1: And many people think depression is just sadness. But we've studied brain biochemistry, neurotransmitters — we can say for sure it's a real illness. Like diabetes. Yet somehow it doesn't occur to you humans to tell a diabetic, \"Hey, c'mon, just make insulin, easy!\" But that's how people talk about depression."
+      "cleanText": "Alien2: We agree with you — our research shows it's more like sadness, not depression. After all, we've studied brain biochemistry, neurotransmitter function, and we can say for certain that depression is a real illness at the biological level. Like diabetes.\n\nAlien1: But for some reason it doesn't occur to you humans to tell a diabetic, \"Hey, what's wrong with you — just produce insulin, easy!\" But about depression you talk like this: \"Stop feeling sorry for yourself, come on, pull yourself together, get a grip!\""
     },
     {
-      "name": "But why study depression specifically?",
+      "name": "That's depression",
       "tags": "",
-      "id": "9",
-      "text": "Alien2: The thing is, this diagnosis is very rarely correct. Roughly eighty percent of the time, depression isn't diagnosed. And the treatments people have come up with only work in about half of cases.\nAlien1: And many people think depression is just sadness. But we've studied brain biochemistry, neurotransmitters — we can say for sure it's a real illness. Like diabetes. Yet somehow it doesn't occur to you humans to tell a diabetic, \"Hey, c'mon, just make insulin, easy!\" But that's how people talk about depression.\n\n[[That makes more sense now]]",
+      "id": "13",
+      "text": "Alien2: But we can't agree with you — our research shows it's more like sadness, not depression. We've studied brain biochemistry, neurotransmitter function, and we can say for certain that depression is a real illness at the biological level. Like diabetes.\n\nAlien1: But for some reason it doesn't occur to you humans to tell a diabetic, \"Hey, what's wrong with you — just produce insulin, easy!\" But about depression you talk like this: \"Stop feeling sorry for yourself, come on, pull yourself together, get a grip!\"\n\n[[You seem to know more than I do!]]",
       "links": [
         {
-          "linkText": "That makes more sense now",
-          "passageName": "That makes more sense now",
-          "original": "[[That makes more sense now]]"
+          "linkText": "You seem to know more than I do!",
+          "passageName": "You seem to know more than I do!",
+          "original": "[[You seem to know more than I do!]]"
         }
       ],
-      "cleanText": "Alien2: The thing is, this diagnosis is very rarely correct. Roughly eighty percent of the time, depression isn't diagnosed. And the treatments people have come up with only work in about half of cases.\nAlien1: And many people think depression is just sadness. But we've studied brain biochemistry, neurotransmitters — we can say for sure it's a real illness. Like diabetes. Yet somehow it doesn't occur to you humans to tell a diabetic, \"Hey, c'mon, just make insulin, easy!\" But that's how people talk about depression."
+      "cleanText": "Alien2: But we can't agree with you — our research shows it's more like sadness, not depression. We've studied brain biochemistry, neurotransmitter function, and we can say for certain that depression is a real illness at the biological level. Like diabetes.\n\nAlien1: But for some reason it doesn't occur to you humans to tell a diabetic, \"Hey, what's wrong with you — just produce insulin, easy!\" But about depression you talk like this: \"Stop feeling sorry for yourself, come on, pull yourself together, get a grip!\""
     },
     {
-      "name": "You seem to know more than I do!",
+      "name": "Yes, that's us",
       "tags": "",
-      "id": "10",
-      "text": "Alien1: Yes, we've learned a great deal. But a lot is still unclear.\n\nAlien1: Still, let us tell you what we do know. Where would you like to start? Neurophysiology? Psychology? Biology? Genetics?",
+      "id": "14",
+      "text": "Alien2: Among the most terrible hardships, people are still able to rejoice, to accept, to find peace. They still see the bright side in the most terrible situations. And depression is an illness where the bright side can't be seen.\nAlien1: I liked how your scientist Robert Sapolsky formulated depression: \"Depression is a biochemical disorder with a genetic component, whose main manifestation is the inability to admire a rainbow or a sunset.\" Very poetic and precise.\n\n[[I agree]]",
+      "links": [
+        {
+          "linkText": "I agree",
+          "passageName": "I agree",
+          "original": "[[I agree]]"
+        }
+      ],
+      "cleanText": "Alien2: Among the most terrible hardships, people are still able to rejoice, to accept, to find peace. They still see the bright side in the most terrible situations. And depression is an illness where the bright side can't be seen.\nAlien1: I liked how your scientist Robert Sapolsky formulated depression: \"Depression is a biochemical disorder with a genetic component, whose main manifestation is the inability to admire a rainbow or a sunset.\" Very poetic and precise."
+    },
+    {
+      "name": "But it's still very sad",
+      "tags": "",
+      "id": "15",
+      "text": "Alien2: I agree. But even among the most terrible hardships, people are still able to rejoice, to accept, to find peace. They still see the bright side in the most terrible situations, and that's amazing. And depression is an illness where the bright side can't be seen.\nAlien1: I liked how your scientist Robert Sapolsky formulated depression: \"Depression is a biochemical disorder with a genetic component, whose main manifestation is the inability to admire a rainbow or a sunset.\" Very poetic and precise.\n\n[[I agree]]",
+      "links": [
+        {
+          "linkText": "I agree",
+          "passageName": "I agree",
+          "original": "[[I agree]]"
+        }
+      ],
+      "cleanText": "Alien2: I agree. But even among the most terrible hardships, people are still able to rejoice, to accept, to find peace. They still see the bright side in the most terrible situations, and that's amazing. And depression is an illness where the bright side can't be seen.\nAlien1: I liked how your scientist Robert Sapolsky formulated depression: \"Depression is a biochemical disorder with a genetic component, whose main manifestation is the inability to admire a rainbow or a sunset.\" Very poetic and precise."
+    },
+    {
+      "name": "I agree",
+      "tags": "",
+      "id": "16",
+      "text": "Alien1: But let us tell you what we already know, and then you'll help us. Where would you like to start? Neurophysiology? Psychology? Biology? Genetics? Symptoms of depression?",
       "links": [],
-      "cleanText": "Alien1: Yes, we've learned a great deal. But a lot is still unclear.\n\nAlien1: Still, let us tell you what we do know. Where would you like to start? Neurophysiology? Psychology? Biology? Genetics?"
+      "cleanText": "Alien1: But let us tell you what we already know, and then you'll help us. Where would you like to start? Neurophysiology? Psychology? Biology? Genetics? Symptoms of depression?"
     }
   ]
 }
